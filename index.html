@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsounds</title>
+    <link rel="stylesheet" type="text/css" href="./libs/warpDrive/warpDrive.css">
+    <link rel="stylesheet" href="./libs/typing/typing.css">
+    <link rel="stylesheet" href="./src/common.css">
+    <style type="text/css">
+    .background-layer {
+        z-index: -1;
+    }
+        #holder {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        #wrapper {
+            /* Title And other elements wrapper */
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .ele {
+            /*设置元素绝对定位*/
+            position: absolute;
+            /*top 50%*/
+            top: 50%;
+            /*left 50%*/
+            left: 50%;
+            /*css3   transform 实现*/
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .aboutBtn {
+            border: 3px solid white;
+            color: white;
+            font-size: 2rem;
+            height: 55px;
+            width: 242.016px;
+            text-align: center;
+        }
+
+        #output {
+            color: white;
+        }
+    </style>
+
+    <div style="display: none;" id="titleSource">
+        Hello,We are the Newsounds.
+    </div>
+</head>
+
+<body>
+    <div class="background-layer">
+        <div id="holder">
+        </div>
+    </div>
+    <div id="wrappe" class="ele">
+        <div class="block">
+            <span id="output"></span>
+            <span class="typing-cursor-white">|</span>
+        </div>
+        <div class="block">
+            <div class="aboutBtn mdui-ripple">开始我们的旅程</div>
+            <audio src="//" autoplay></audio>
+        </div>
+    </div>
+    <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./libs/warpDrive/warpDrive.js"></script>
+    <script>
+        $(document).ready(function () {
+            //------------------------------------------------------------------------
+            //Settings - params for WarpDrive
+            var parentContainer = document.getElementById("holder")
+            var containerHeight = parentContainer.offsetHeight;
+            var containerWidth = parentContainer.offsetWidth;
+            var settings = {
+                width: containerWidth,
+                height: containerHeight,
+                autoResize: false,
+                autoResizeMinWidth: null,
+                autoResizeMaxWidth: null,
+                autoResizeMinHeight: null,
+                autoResizeMaxHeight: null,
+                addMouseControls: true,
+                addTouchControls: true,
+                hideContextMenu: true,
+                starCount: 6666,
+                starBgCount: 2222,
+                starBgColor: {
+                    r: 0,
+                    g: 204,
+                    b: 255
+                },
+                starBgColorRangeMin: 20,
+                starBgColorRangeMax: 80,
+                starColor: {
+                    r: 0,
+                    g: 204,
+                    b: 255
+                },
+                starColorRangeMin: 50,
+                starColorRangeMax: 100,
+                starfieldBackgroundColor: {
+                    r: 5,
+                    g: 5,
+                    b: 14
+                },
+                starDirection: 1,
+                starSpeed: 20,
+                starSpeedMax: 200,
+                starSpeedAnimationDuration: 2,
+                starFov: 300,
+                starFovMin: 200,
+                starFovAnimationDuration: 2,
+                starRotationPermission: true,
+                starRotationDirection: 1,
+                starRotationSpeed: 0.0,
+                starRotationSpeedMax: 1.0,
+                starRotationAnimationDuration: 2,
+                starWarpLineLength: 2.0,
+                starWarpTunnelDiameter: 100,
+                starFollowMouseSensitivity: 0.025,
+                starFollowMouseXAxis: true,
+                starFollowMouseYAxis: true
+
+            };
+
+            //------------------------------------------------------------------------
+
+            //standalone
+
+            //init
+
+            //var warpdrive = new WarpDrive( document.getElementById( 'holder' ) );
+            var warpdrive = new WarpDrive(document.getElementById('holder'), settings);
+
+            //------------------------------------------------------------------------
+
+            //jQuery
+
+            //init
+
+            //$( '#holder' ).warpDrive();
+            //$( '#holder' ).warpDrive( settings );
+
+            //------------------------------------------------------------------------
+
+        });
+    </script>
+    <script src="./libs/typing/typing.min.js"></script>
+    <script>
+        var typing = new Typing({
+            source: document.getElementById("titleSource"),
+            output: document.getElementById("output"),
+            delay: 80
+        });
+        typing.start()
+    </script>
+</body>
+
+</html>
